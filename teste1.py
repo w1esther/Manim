@@ -33,7 +33,20 @@ class Teste(Scene):
 
         self.clear()
 
-        funcao = MathTex(r'f(x)=2x^2-4x+6')
+        # funcao = MathTex(r'f(x)=2x^2-4x+6')
 
-        self.play(FadeIn(funcao))
+        # self.play(FadeIn(funcao))
+        # self.wait()
+
+        texto = always_redraw(lambda: Text('explorando o Manim!'))
+        box = always_redraw(lambda: SurroundingRectangle(texto))
+        # texto2 = always_redraw(lambda: Text('testando'))
+        # texto2.next_to(box, DOWN, buff=0.5)
+
+        self.play(Create(texto), Create(box))
+
+        self.wait()
+
+        self.play(texto.animate.move_to(RIGHT*2))
+
         self.wait()
