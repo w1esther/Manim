@@ -13,6 +13,8 @@ class Tangente(Scene):
 
         tangente = always_redraw(lambda: eixos.get_secant_slope_group(x=k.get_value(), graph=funcao, dx=0.01, secant_line_color=ORANGE, secant_line_length=3))
 
+        # c2p pega os pontos fornecidos como parâmetros e retorna o ponto correspondente na cena 
+
         ponto = always_redraw( lambda: Dot().move_to(eixos.c2p(k.get_value(), funcao.underlying_function(k.get_value()))))
 
         self.play(FadeIn(eixos))
