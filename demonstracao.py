@@ -3,8 +3,8 @@ from manim import *
 class Demonstracao_Pitagoras(Scene):
     def construct(self):
         
-        malha = NumberPlane()
-        self.play(FadeIn(malha))
+        # malha = NumberPlane()
+        # self.play(FadeIn(malha))
 
         A = np.array([0, 3, 0])
         B = np.array([-3, -1, 0])
@@ -26,7 +26,28 @@ class Demonstracao_Pitagoras(Scene):
         CB = Line(C, B)
         AH = Line(A, ponto1)
 
-        triangulo_mover.add(AB, AC, BC, BA, CA, CB)
+        ponto_a = np.array([0, -1.5, 0])
+        ponto_b = np.array([-2, 1, 0])
+        ponto_c = np.array([3, 1, 0])
+        ponto_m = np.array([-1, -0.5, 0])
+        ponto_n = np.array([1.5, -0.5, 0])
+        ponto_b2 = np.array([-2, 1.5, 0])
+        ponto_c2 = np.array([3, 1.5, 0])
+        ponto_m2 = np.array([-2, -1.5, 0])
+        ponto_n2 = np.array([2, -1.5, 0])
+
+        texto_a = Text('a').move_to(ponto_a)
+        texto_b = Text('b').move_to(ponto_b)
+        texto_c = Text('c').move_to(ponto_c)
+        texto_m = Text('m').move_to(ponto_m)
+        texto_n = Text('n').move_to(ponto_n)
+        texto_b2 = Text('b', font_size=20).move_to(ponto_b2)
+        texto_c2 = Text('c', font_size=20).move_to(ponto_c2)
+        texto_m2 = Text('m', font_size=20).move_to(ponto_m2)
+        texto_n2 = Text('n', font_size=20).move_to(ponto_n2)
+
+
+        triangulo_mover.add(AB, AC, BC, BA, CA, CB, texto_a, texto_b, texto_c, texto_m, texto_n)
 
         # cria o simbolo do angulo reto entre dois segmentos de reta que têm origem no mesmo vértice
 
@@ -89,8 +110,8 @@ class Demonstracao_Pitagoras(Scene):
 
         ang_beta_ACH = Angle(AH, AC, radius=0.6, other_angle=False, color=ORANGE)
 
-        trianguloBAH_mover.add(beta_label_BAH, ang_beta_BAH, ang_alfa_BAH)
-        trianguloACH_mover.add(alfa_label_ACH, ang_alfa_ACH, ang_beta_ACH)
+        trianguloBAH_mover.add(beta_label_BAH, ang_beta_BAH, ang_alfa_BAH, texto_b2, texto_m2)
+        trianguloACH_mover.add(alfa_label_ACH, ang_alfa_ACH, ang_beta_ACH, texto_c2, texto_n2)
 
         self.play(Create(trianguloBAH_mover), Create(trianguloACH_mover))
 
@@ -101,7 +122,7 @@ class Demonstracao_Pitagoras(Scene):
         self.play(triangulo_mover.animate.move_to(UP*2 + 3*LEFT))
         self.play(triangulo_mover.animate.scale(0.5))
 
-        self.play(trianguloBAH_mover.animate.shift((0.5*DOWN)+(3.5*RIGHT)))
+        self.play(trianguloBAH_mover.animate.shift((0.2*DOWN)+(3.2*RIGHT)))
 
         self.play(trianguloBAH_mover.animate.rotate(-90*DEGREES))
 
@@ -115,4 +136,10 @@ class Demonstracao_Pitagoras(Scene):
 
         self.wait(2)
 
-        
+        self.play(trianguloBAH_mover.animate.shift((1.5*UP)+(1.2*LEFT)))
+        self.play(trianguloBAH_mover.animate.scale(0.6))
+
+        self.play(trianguloACH_mover.animate.shift((1.2*UP)+(1.2*RIGHT)))
+        self.play(trianguloACH_mover.animate.scale(0.5))
+
+        self.wait(2)
