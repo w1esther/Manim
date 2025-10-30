@@ -25,7 +25,11 @@ class Demonstracao_Pitagoras(Scene):
 
         triangulo_mover.add(AB, AC, BC, BA, CA, CB)
 
+        # cria o simbolo do angulo reto entre dois segmentos de reta que têm origem no mesmo vértice
+
         ang_reto = RightAngle(AB, AC, length=0.4, quadrant=(1, 1), color=YELLOW)
+
+        # cria o arco cuvo do angulo entre dois segmentos de reta que têm origem no mesmo vértice
 
         ang_beta = Angle(BC, BA, radius=0.6, other_angle=False, color=ORANGE)
 
@@ -59,11 +63,19 @@ class Demonstracao_Pitagoras(Scene):
 
         self.play(Create(altura), FadeIn(ang_reto2), FadeIn(ang_reto3))
 
+        trianguloBAH = Polygon(A, B, ponto, color=RED)
+        trianguloACH = Polygon(A, C, ponto, color=RED)
+
+        self.play(Create(trianguloBAH), Create(trianguloACH))
+
         self.wait(2)
 
         self.play(triangulo_mover.animate.move_to(UP*2 + 3*LEFT))
         self.play(triangulo_mover.animate.scale(0.5))
-    
 
-        self.wait(5)
+        self.play(trianguloBAH.animate.shift((0.5*DOWN)+(3.5*RIGHT)))
+
+        self.play(trianguloBAH.animate.rotate(-90*DEGREES))
+
+        self.wait(2)
     

@@ -1,0 +1,11 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/w1mar/OneDrive/Documentos/GitHub/Manim/media/videos/demonstracao/480p15/partial_movie_files/Demonstracao_Pitagoras/1185818338_1197533422_223132457.mp4'
+file 'file:C:/Users/w1mar/OneDrive/Documentos/GitHub/Manim/media/videos/demonstracao/480p15/partial_movie_files/Demonstracao_Pitagoras/624642324_3105872473_3099330829.mp4'
+file 'file:C:/Users/w1mar/OneDrive/Documentos/GitHub/Manim/media/videos/demonstracao/480p15/partial_movie_files/Demonstracao_Pitagoras/624642324_1412094045_103130675.mp4'
+file 'file:C:/Users/w1mar/OneDrive/Documentos/GitHub/Manim/media/videos/demonstracao/480p15/partial_movie_files/Demonstracao_Pitagoras/624642324_3130043804_183022860.mp4'
+file 'file:C:/Users/w1mar/OneDrive/Documentos/GitHub/Manim/media/videos/demonstracao/480p15/partial_movie_files/Demonstracao_Pitagoras/624642324_2408024828_2303508570.mp4'
+file 'file:C:/Users/w1mar/OneDrive/Documentos/GitHub/Manim/media/videos/demonstracao/480p15/partial_movie_files/Demonstracao_Pitagoras/624642324_3579357011_182115130.mp4'
+file 'file:C:/Users/w1mar/OneDrive/Documentos/GitHub/Manim/media/videos/demonstracao/480p15/partial_movie_files/Demonstracao_Pitagoras/624642324_1441049119_182115130.mp4'
+file 'file:C:/Users/w1mar/OneDrive/Documentos/GitHub/Manim/media/videos/demonstracao/480p15/partial_movie_files/Demonstracao_Pitagoras/624642324_1070066407_2564387187.mp4'
+file 'file:C:/Users/w1mar/OneDrive/Documentos/GitHub/Manim/media/videos/demonstracao/480p15/partial_movie_files/Demonstracao_Pitagoras/624642324_2105189784_2564387187.mp4'
+file 'file:C:/Users/w1mar/OneDrive/Documentos/GitHub/Manim/media/videos/demonstracao/480p15/partial_movie_files/Demonstracao_Pitagoras/624642324_2408024828_1608682943.mp4'
