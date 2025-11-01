@@ -3,8 +3,8 @@ from manim import *
 class Demonstracao_Pitagoras(Scene):
     def construct(self):
         
-        # malha = NumberPlane()
-        # self.play(FadeIn(malha))
+        malha = NumberPlane()
+        self.play(FadeIn(malha))
 
         A = np.array([0, 3, 0])
         B = np.array([-3, -1, 0])
@@ -141,5 +141,16 @@ class Demonstracao_Pitagoras(Scene):
 
         self.play(trianguloACH_mover.animate.shift((1.2*UP)+(1.2*RIGHT)))
         self.play(trianguloACH_mover.animate.scale(0.5))
+
+        self.play(FadeOut(texto_m), FadeOut(texto_n), FadeOut(linha_altura), FadeOut(ang_reto2), FadeOut(ang_reto3), FadeOut(altura))
+
+        seta1 = Arrow(start=0.8*LEFT, end=0.8*RIGHT, color=YELLOW, stroke_width=1.5).shift((3.5*LEFT)+(2.2*UP)).rotate(-90*DEGREES)
+        seta2 = Arrow(start=0.8*LEFT, end=0.8*RIGHT, color=YELLOW, stroke_width=1.5).shift(1.7*UP).rotate(45*DEGREES)
+        seta3 = Arrow(start=1.4*LEFT, end=1.4*RIGHT, color=YELLOW, stroke_width=1.5).shift((1.9*UP)+(3.0*LEFT)).rotate(160*DEGREES)
+        seta4 = Arrow(start=1.2*LEFT, end=1.2*RIGHT, color=YELLOW, stroke_width=1.5).shift((1.7*UP)+(0.5*RIGHT)).rotate(155*DEGREES)
+
+        relacao_1 = MathTex(r"\frac{a}{b} = \frac{b}{m}").move_to((2*LEFT)+(DOWN))
+
+        self.play(Create(seta1), Create(seta2), Write(relacao_1), Create(seta3), Create(seta4))
 
         self.wait(2)
