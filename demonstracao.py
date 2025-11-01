@@ -153,4 +153,8 @@ class Demonstracao_Pitagoras(Scene):
 
         self.play(Create(seta1), Create(seta2), Write(relacao_1), Create(seta3), Create(seta4))
 
+        self.wait()
+
+        self.play(FadeOut(seta1), FadeOut(seta2), FadeOut(seta3), FadeOut(seta4))
+
         self.wait(2)
