@@ -144,7 +144,7 @@ class Demonstracao_Pitagoras(Scene):
 
         self.play(FadeOut(texto_m), FadeOut(texto_n), FadeOut(linha_altura), FadeOut(ang_reto2), FadeOut(ang_reto3), FadeOut(altura))
 
-        seta1 = Arrow(start=0.8*LEFT, end=0.8*RIGHT, color=YELLOW, stroke_width=1.5).shift((3.5*LEFT)+(2.2*UP)).rotate(-90*DEGREES)
+        seta1 = Arrow(start=0.8*LEFT, end=1.2*RIGHT, color=YELLOW, stroke_width=1.5).shift((3.5*LEFT)+(2.2*UP)).rotate(-90*DEGREES)
         seta2 = Arrow(start=0.8*LEFT, end=0.8*RIGHT, color=YELLOW, stroke_width=1.5).shift(1.7*UP).rotate(45*DEGREES)
         seta3 = Arrow(start=1.4*LEFT, end=1.4*RIGHT, color=YELLOW, stroke_width=1.5).shift((1.9*UP)+(3.0*LEFT)).rotate(160*DEGREES)
         seta4 = Arrow(start=1.2*LEFT, end=1.2*RIGHT, color=YELLOW, stroke_width=1.5).shift((1.7*UP)+(0.5*RIGHT)).rotate(155*DEGREES)
@@ -156,5 +156,28 @@ class Demonstracao_Pitagoras(Scene):
         self.wait()
 
         self.play(FadeOut(seta1), FadeOut(seta2), FadeOut(seta3), FadeOut(seta4))
+
+        self.wait()
+
+        seta5 = Arrow(start=1.1*RIGHT, end=1.4*LEFT, color=YELLOW, stroke_width=1.5).shift((1.9*UP)+(3.2*LEFT)).rotate(-160*DEGREES)
+        seta6 = Arrow(start=0.8*LEFT, end=0.8*RIGHT, color=YELLOW, stroke_width=1.5).shift((1.7*UP)+(3.0*RIGHT)).rotate(45*DEGREES)
+        seta7 = Arrow(start=0.8*LEFT, end=1.2*RIGHT, color=YELLOW, stroke_width=1.5).shift((2.0*UP)+(2.7*RIGHT)).rotate(-70*DEGREES)
+
+        relacao_2 = MathTex(r"\frac{a}{c} = \frac{c}{n}").move_to((2*RIGHT)+(DOWN))
+
+        self.play(Create(seta1), Create(seta5), Create(seta6), Write(relacao_2), Create(seta7))
+
+        self.wait()
+        
+        self.play(FadeOut(seta1), FadeOut(seta5), FadeOut(seta6), FadeOut(seta7))
+
+        relacao_1_2 = MathTex(r"b^2 = a \cdot m").move_to((2*LEFT)+(DOWN))
+        relacao_2_2 = MathTex(r"c^2 = a \cdot n").move_to((2*RIGHT)+(DOWN))
+
+        self.play(Transform(relacao_1, relacao_1_2), Transform(relacao_2, relacao_2_2))
+        
+        mais = MathTex("+").move_to((LEFT*1.5 + 0.5*DOWN))
+
+        self.play(relacao_1.animate.move_to(ORIGIN), relacao_2.animate.move_to((ORIGIN)+(DOWN)), FadeIn(mais))
 
         self.wait(2)
