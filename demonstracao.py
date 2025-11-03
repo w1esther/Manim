@@ -3,8 +3,8 @@ from manim import *
 class Demonstracao_Pitagoras(Scene):
     def construct(self):
         
-        malha = NumberPlane()
-        self.play(FadeIn(malha))
+        # malha = NumberPlane()
+        # self.play(FadeIn(malha))
 
         A = np.array([0, 3, 0])
         B = np.array([-3, -1, 0])
@@ -179,5 +179,31 @@ class Demonstracao_Pitagoras(Scene):
         mais = MathTex("+").move_to((LEFT*1.5 + 0.5*DOWN))
 
         self.play(relacao_1.animate.move_to(ORIGIN), relacao_2.animate.move_to((ORIGIN)+(DOWN)), FadeIn(mais))
+
+        resultado = MathTex(r"b^2 + c^2 = a \cdot m + a \cdot n").move_to(2*DOWN)
+
+        resultado_2 = MathTex(r"b^2 + c^2 = a (m + n)").scale(1.5)
+
+        resultado_3 = MathTex(r"b^2 + c^2 = a \cdot a")
+
+        resultado_4 = MathTex(r"b^2 + c^2 = a^2")
+
+        self.play(FadeIn(resultado))
+
+        self.play(FadeOut(relacao_1), FadeOut(relacao_2), FadeOut(mais))
+
+        self.play(resultado.animate.scale(1.5).shift(2*UP))
+
+        self.play(Transform(resultado, resultado_2))
+
+        self.wait()
+
+        self.play(Transform(resultado, resultado_3))
+
+        self.wait()
+
+        self.play(Transform(resultado, resultado_4))
+
+        self.wait()
 
         self.wait(2)
