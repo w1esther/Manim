@@ -49,7 +49,6 @@ class AlinhaTriangulos(Scene):
         # parâmetros numéricos (2D)
         BA = (A - B)[:2]
         BH = (H - B)[:2]
-        # k = np.linalg.norm(BH) / np.linalg.norm(BA)   # ~0.5547002
         theta = -math.atan2(BA[1], BA[0])            # cerca de -0.98279 rad (-56.3099°)
 
         # 1) rotaciona em torno de B
@@ -61,11 +60,6 @@ class AlinhaTriangulos(Scene):
                       [0., 0., 1.]])
         # apply_matrix aplica a transformação diretamente às coordenadas
         self.play(tri_BAH.animate.apply_matrix(S, about_point=B))
-
-        # 3) escala uniforme em torno de B
-        # self.play(tri_BAH.animate.scale(k, about_point=B))
-
-        # agora tri_BAH deve coincidir (orientação e proporção) com tri_BAC
 
         self.play(tri_BAH.animate.move_to(2.15*UP+0.7*RIGHT))
         self.wait()
