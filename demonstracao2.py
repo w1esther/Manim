@@ -1,16 +1,16 @@
 from manim import *
 
-class Demonstracao_Pitagoras(Scene):
+class Demonstracao_Pitagoras2(Scene):
     def construct(self):
         
         malha = NumberPlane()
         self.play(FadeIn(malha))
 
         A = np.array([0, 3, 0])
-        B = np.array([-3, -1, 0])
-        C = np.array([4, 0, 0])
+        B = np.array([-2, 0, 0])
+        C = np.array([4.5, 0, 0])
 
-        triangulo = Polygon(A, B, C, color=RED)
+        triangulo = Polygon(A, B, C)
         self.play(Create(triangulo))
 
         triangulo_mover = VGroup()
@@ -24,23 +24,23 @@ class Demonstracao_Pitagoras(Scene):
 
         # retas e pontos dos triângulos que crio
 
-        AB = Line(A, B)
-        AC = Line(A, C)
-        BC = Line(B, C)
-        BA = Line(B, A)
-        CA = Line(C, A)
-        CB = Line(C, B)
-        AH = Line(A, H)
+        AB = Line(A, B, color=BLUE)
+        AC = Line(A, C, color=YELLOW)
+        BC = Line(B, C, color=ORANGE)
+        BA = Line(B, A, color= GREEN)
+        CA = Line(C, A, color=RED)
+        CB = Line(C, B, color=PURPLE)
+        AH = Line(A, H, color=PINK)
 
         ponto_a = np.array([0, -1.5, 0])
         ponto_b = np.array([-2, 1, 0])
-        ponto_c = np.array([3, 1, 0])
+        ponto_c = np.array([3.5, 1, 0])
         ponto_m = np.array([-1, -0.5, 0])
         ponto_n = np.array([1.5, -0.5, 0])
         ponto_b2 = np.array([-2, 1.5, 0])
         ponto_c2 = np.array([3, 1.5, 0])
-        ponto_m2 = np.array([-2, -1.5, 0])
-        ponto_n2 = np.array([2, -1.5, 0])
+        ponto_m2 = np.array([-1, -0.5, 0])
+        ponto_n2 = np.array([2, -0.5, 0])
 
         texto_a = Text('a').move_to(ponto_a)
         texto_b = Text('b').move_to(ponto_b)
@@ -51,7 +51,6 @@ class Demonstracao_Pitagoras(Scene):
         texto_c2 = Text('c', font_size=20).move_to(ponto_c2)
         texto_m2 = Text('m', font_size=20).move_to(ponto_m2)
         texto_n2 = Text('n', font_size=20).move_to(ponto_n2)
-
 
         triangulo_mover.add(AB, AC, BC, BA, CA, CB, texto_a, texto_b, texto_c, texto_m, texto_n)
 
@@ -89,8 +88,8 @@ class Demonstracao_Pitagoras(Scene):
 
         self.play(Create(altura), FadeIn(ang_reto2), FadeIn(ang_reto3))
 
-        trianguloBAH = Polygon(A, B, H, color=RED)
-        trianguloACH = Polygon(A, C, H, color=RED)
+        trianguloBAH = Polygon(A, B, H, color=YELLOW)
+        trianguloACH = Polygon(A, C, H, color=PURPLE)
 
         trianguloACH_mover = VGroup()
         trianguloACH_mover.add(trianguloACH)
@@ -121,93 +120,9 @@ class Demonstracao_Pitagoras(Scene):
 
         self.play(FadeIn(beta_label_BAH), FadeIn(ang_beta_BAH), FadeIn(ang_alfa_ACH), FadeIn(alfa_label_ACH))
 
-        self.wait(2)
-
         self.play(triangulo_mover.animate.move_to(UP*2 + 3*LEFT))
         self.play(triangulo_mover.animate.scale(0.5))
 
-        self.play(trianguloBAH_mover.animate.shift((0.2*DOWN)+(3.2*RIGHT)))
-
-        self.play(trianguloBAH_mover.animate.rotate(-90*DEGREES))
-
-        self.wait()
-
-        self.play(trianguloBAH_mover.animate.shift(RIGHT))
-
-        self.play(trianguloBAH_mover.animate.shift(-1*RIGHT))
-        self.play(trianguloBAH_mover.animate.shift(UP))
-        self.play(trianguloBAH_mover.animate.shift(-1*UP))
-
         self.wait(2)
 
-        self.play(trianguloBAH_mover.animate.shift((1.5*UP)+(1.2*LEFT)))
-        self.play(trianguloBAH_mover.animate.scale(0.5))
-
-        self.play(trianguloACH_mover.animate.shift((1.2*UP)+(1.2*RIGHT)))
-        self.play(trianguloACH_mover.animate.scale(0.5))
-
-        self.play(FadeOut(texto_m), FadeOut(texto_n), FadeOut(linha_altura), FadeOut(ang_reto2), FadeOut(ang_reto3), FadeOut(altura))
-
-        seta1 = Arrow(start=0.8*LEFT, end=1.2*RIGHT, color=YELLOW, stroke_width=1.5).shift((3.5*LEFT)+(2.2*UP)).rotate(-90*DEGREES)
-        seta2 = Arrow(start=0.8*LEFT, end=0.8*RIGHT, color=YELLOW, stroke_width=1.5).shift(1.7*UP).rotate(45*DEGREES)
-        seta3 = Arrow(start=1.4*LEFT, end=1.4*RIGHT, color=YELLOW, stroke_width=1.5).shift((1.9*UP)+(3.0*LEFT)).rotate(160*DEGREES)
-        seta4 = Arrow(start=1.2*LEFT, end=1.2*RIGHT, color=YELLOW, stroke_width=1.5).shift((1.7*UP)+(0.5*RIGHT)).rotate(155*DEGREES)
-
-        relacao_1 = MathTex(r"\frac{a}{b} = \frac{b}{m}").move_to((2*LEFT)+(DOWN))
-
-        self.play(Create(seta1), Create(seta2), Write(relacao_1), Create(seta3), Create(seta4))
-
-        self.wait()
-
-        self.play(FadeOut(seta1), FadeOut(seta2), FadeOut(seta3), FadeOut(seta4))
-
-        self.wait()
-
-        seta5 = Arrow(start=1.1*RIGHT, end=1.4*LEFT, color=YELLOW, stroke_width=1.5).shift((1.9*UP)+(3.2*LEFT)).rotate(-160*DEGREES)
-        seta6 = Arrow(start=0.8*LEFT, end=0.8*RIGHT, color=YELLOW, stroke_width=1.5).shift((1.7*UP)+(3.0*RIGHT)).rotate(45*DEGREES)
-        seta7 = Arrow(start=0.8*LEFT, end=1.2*RIGHT, color=YELLOW, stroke_width=1.5).shift((2.0*UP)+(2.7*RIGHT)).rotate(-70*DEGREES)
-
-        relacao_2 = MathTex(r"\frac{a}{c} = \frac{c}{n}").move_to((2*RIGHT)+(DOWN))
-
-        self.play(Create(seta1), Create(seta5), Create(seta6), Write(relacao_2), Create(seta7))
-
-        self.wait()
         
-        self.play(FadeOut(seta1), FadeOut(seta5), FadeOut(seta6), FadeOut(seta7))
-
-        relacao_1_2 = MathTex(r"b^2 = a \cdot m").move_to((2*LEFT)+(DOWN))
-        relacao_2_2 = MathTex(r"c^2 = a \cdot n").move_to((2*RIGHT)+(DOWN))
-
-        self.play(Transform(relacao_1, relacao_1_2), Transform(relacao_2, relacao_2_2))
-        
-        mais = MathTex("+").move_to((LEFT*1.5 + 0.5*DOWN))
-
-        self.play(relacao_1.animate.move_to(ORIGIN), relacao_2.animate.move_to((ORIGIN)+(DOWN)), FadeIn(mais))
-
-        resultado = MathTex(r"b^2 + c^2 = a \cdot m + a \cdot n").move_to(2*DOWN)
-
-        resultado_2 = MathTex(r"b^2 + c^2 = a (m + n)").scale(1.5)
-
-        resultado_3 = MathTex(r"b^2 + c^2 = a \cdot a")
-
-        resultado_4 = MathTex(r"b^2 + c^2 = a^2")
-
-        self.play(FadeIn(resultado))
-
-        self.play(FadeOut(relacao_1), FadeOut(relacao_2), FadeOut(mais))
-
-        self.play(resultado.animate.scale(1.5).shift(2*UP))
-
-        self.play(Transform(resultado, resultado_2))
-
-        self.wait()
-
-        self.play(Transform(resultado, resultado_3))
-
-        self.wait()
-
-        self.play(Transform(resultado, resultado_4))
-
-        self.wait()
-
-        self.wait(2)

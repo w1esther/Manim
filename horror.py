@@ -89,8 +89,8 @@ class Demonstracao_Pitagoras(Scene):
 
         self.play(Create(altura), FadeIn(ang_reto2), FadeIn(ang_reto3))
 
-        trianguloBAH = Polygon(A, B, H, color=RED)
-        trianguloACH = Polygon(A, C, H, color=RED)
+        trianguloBAH = Polygon(A, B, H, color=RED).flip(axis=RIGHT)
+        trianguloACH = Polygon(A, C, H, color=RED).flip(axis=RIGHT)
 
         trianguloACH_mover = VGroup()
         trianguloACH_mover.add(trianguloACH)
@@ -98,21 +98,21 @@ class Demonstracao_Pitagoras(Scene):
         trianguloBAH_mover = VGroup()
         trianguloBAH_mover.add(trianguloBAH)
 
-        ang_beta_BAH = Angle(BC, BA, radius=0.6, other_angle=False, color=ORANGE)
+        ang_beta_BAH = Angle(BC, BA, radius=0.6, other_angle=False, color=ORANGE).flip(axis=RIGHT)
 
-        ang_alfa_ACH = Angle(CA, CB, radius=0.6, other_angle=False, color=GREEN)
+        ang_alfa_ACH = Angle(CA, CB, radius=0.6, other_angle=False, color=GREEN).flip(axis=RIGHT)
 
-        beta_label_BAH = MathTex(r"\beta").move_to(ang_beta.point_from_proportion(0.5) + 0.3*UP + 0.5*RIGHT)
+        beta_label_BAH = MathTex(r"\beta").move_to(ang_beta.point_from_proportion(0.5) + 0.3*UP + 0.5*RIGHT).flip(axis=RIGHT)
 
-        alfa_label_ACH = MathTex(r"\alpha").move_to(ang_alfa.point_from_proportion(0.5) + 0.3*UP + 0.5*LEFT)
+        alfa_label_ACH = MathTex(r"\alpha").move_to(ang_alfa.point_from_proportion(0.5) + 0.3*UP + 0.5*LEFT).flip(axis=RIGHT)
 
         # alfa_label_BAH = MathTex(r"\alpha").move_to(ang_alfa.point_from_proportion(0.5) + 0.3*UP + 0.5*LEFT)
 
         # beta_label_ACH = MathTex(r"\beta").move_to(ang_beta.point_from_proportion(0.5) + 0.3*UP + 0.5*RIGHT)
 
-        ang_alfa_BAH = Angle(AB, AH, radius=0.6, other_angle=False, color=GREEN)
+        ang_alfa_BAH = Angle(AB, AH, radius=0.6, other_angle=False, color=GREEN).flip(axis=RIGHT)
 
-        ang_beta_ACH = Angle(AH, AC, radius=0.6, other_angle=False, color=ORANGE)
+        ang_beta_ACH = Angle(AH, AC, radius=0.6, other_angle=False, color=ORANGE).flip(axis=RIGHT)
 
         trianguloBAH_mover.add(beta_label_BAH, ang_beta_BAH, ang_alfa_BAH, texto_b2, texto_m2)
         trianguloACH_mover.add(alfa_label_ACH, ang_alfa_ACH, ang_beta_ACH, texto_c2, texto_n2)
