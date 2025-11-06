@@ -36,7 +36,7 @@ class AlinhaTriangulos(Scene):
         guardar_angulos_lados = VGroup()
         guardar_angulos_lados.add(ang_reto, ang_beta, ang_alfa, beta_label, alfa_label)
 
-        self.play(Create(guardar_angulos_lados))
+        self.play(Create(guardar_angulos_lados), run_time=3)
         # calcula H (pé da altura)
         BC_vec = C - B
         t = np.dot(A - B, BC_vec) / np.dot(BC_vec, BC_vec)
