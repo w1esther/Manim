@@ -2,7 +2,7 @@ from manim import *
 import numpy as np
 import math
 
-class AlinhaTriangulos(Scene):
+class AlinhaTriangulos(MovingCameraScene):
     def construct(self):
 
         # malha = NumberPlane()
@@ -38,6 +38,23 @@ class AlinhaTriangulos(Scene):
         pontoH2 = Dot(point=H, color=RED)
         pontoH3 = Dot(point=H, color=RED)
 
+        ponto_A2_certo = Dot(point=A, color=RED)
+        ponto_B2_certo = Dot(point=B, color=RED)
+        ponto_C2_certo = Dot(point=C, color=RED)
+        ponto_A3_certo = Dot(point=A, color=RED)
+        pontoH2_certo = Dot(point=H, color=RED)
+        pontoH3_certo = Dot(point=H, color=RED)
+        label_A2_certo = MathTex("A").shift(0.5*LEFT + 3*DOWN)
+        label_B2_certo = MathTex("B").shift(5*LEFT + 3*DOWN)
+        label_C2_certo = MathTex("C").shift(6.3*RIGHT + 3*DOWN)
+        label_A3_certo = MathTex("A").shift(0.2*RIGHT+3*DOWN)
+        label_H2_certo = MathTex("H").shift(3.2*LEFT + 1*DOWN)
+        label_H3_certo = MathTex("H").shift(2.1*RIGHT + 0.2*DOWN)
+        label_m2_certo = MathTex("m").shift(4.3*LEFT+1.8*DOWN)
+        label_n2_certo = MathTex("n").shift(4.2*RIGHT+1.3*DOWN)
+        label_c2_certo = MathTex("c").shift(3*LEFT+3.3*DOWN)
+        label_b2_certo = MathTex("b").shift(2.5*RIGHT+3.3*DOWN)
+
         label_A = MathTex("A").next_to(A, UP, buff=0.1).scale(0.6)
         label_A2 = MathTex("A").next_to(A, UP, buff=0.1).scale(0.6)
         label_A3 = MathTex("A").next_to(A, UP, buff=0.1).scale(0.6)
@@ -51,6 +68,8 @@ class AlinhaTriangulos(Scene):
 
         # a → oposto de A (entre B e C)
         label_a = MathTex("a").move_to((B + C) / 2 + 0.5*DOWN)
+        label_a2 = MathTex("a").move_to((B + C) / 2 + 0.5*DOWN)
+
         # b → oposto de B (entre A e C)
         label_b = MathTex("b").move_to((A + C) / 2 + 0.5*UP)
         label_b2 = MathTex("b").move_to((A + C) / 2 + 0.5*UP)
@@ -75,7 +94,7 @@ class AlinhaTriangulos(Scene):
         # triângulo maior BAC
         tri_BAC = Polygon(B, A, C, color=BLUE)
         guardar_tri_BAC = VGroup()
-        guardar_tri_BAC.add(tri_BAC, ponto_A, ponto_B, ponto_C, label_A, label_B, label_C, label_a, label_b, label_c, linha_altura, label_m, label_n, label_H, pontoH)
+        guardar_tri_BAC.add(tri_BAC, ponto_A, ponto_B, ponto_C, label_A, label_B, label_C, label_a, label_b, label_c, linha_altura, label_m, label_n, label_H, pontoH, label_a2)
 
         self.play(Create(guardar_tri_BAC), run_time=4)
 
@@ -136,7 +155,7 @@ class AlinhaTriangulos(Scene):
         self.wait()
         self.play(guardar_tri_BAH.animate.move_to(0.75*UP+2.6*RIGHT))
         self.wait()
-        self.play(guardar_tri_BAH.animate.move_to(2*DOWN+2.7*LEFT))
+        self.play(guardar_tri_BAH.animate.move_to(2.3*DOWN+2.7*LEFT))
 
         self.play(guardar_tri_CAH.animate.move_to(1.15*UP+1.95*RIGHT))
         self.wait()
@@ -147,10 +166,29 @@ class AlinhaTriangulos(Scene):
         self.play(guardar_tri_CAH.animate.shift(2.5*RIGHT+3*DOWN))
 
         self.play(guardar_tri_BAC.animate.shift(4*LEFT), guardar_angulos_lados.animate.shift(4*LEFT))
+        self.play(FadeOut(linha_altura), FadeOut(label_m), FadeOut(label_n), FadeOut(pontoH), FadeOut(label_H))
+        self.play(self.camera.frame.animate.scale(1.5))
         self.wait()
 
-        label_m2.shift(LEFT)
 
-        self.play(label_a.animate.scale(2.5), label_c.animate.scale(2.5), label_m2.animate.scale(2.5), label_c2.animate.scale(2.5))
+        self.play(Transform(label_H2, label_H2_certo), Transform(label_H3, label_H3_certo), Transform(label_m2, label_m2_certo), Transform(label_A2, label_A2_certo), Transform(label_A3, label_A3_certo), Transform(label_n2, label_n2_certo), Transform(label_b2, label_b2_certo), Transform(label_c2, label_c2_certo), Transform(label_B2, label_B2_certo), Transform(label_C2, label_C2_certo))
+
+        relacao_1 = MathTex(
+            r"\frac{\phantom{a}}{\phantom{b}} = \frac{\phantom{c}}{\phantom{d}}"
+        ).move_to(1.5*RIGHT + 2*UP).scale(2)
+
+        relacao_2 = MathTex(
+            r"\frac{\phantom{a}}{\phantom{b}} = \frac{\phantom{c}}{\phantom{d}}"
+        ).move_to(5.5*RIGHT + 2*UP).scale(2)
+
+        self.play(label_a.animate.scale(2), label_c.animate.scale(2), label_m2.animate.scale(2), label_c2.animate.scale(2), FadeIn(relacao_1))
+
+        self.play(label_a.animate.shift(3.2*RIGHT+3*UP), label_c2.animate.shift(3.5*RIGHT + 4.8*UP))
+        self.play(label_c.animate.shift(1*UP + 8*RIGHT), label_m2.animate.shift(6.8*RIGHT + 3.3*UP))
+
+        self.play(FadeIn(relacao_2), label_a2.animate.scale(2), label_b.animate.scale(2), label_b2.animate.scale(2), label_n2.animate.scale(2))
+
+        self.play(label_a2.animate.shift(7.2*RIGHT+3*UP), label_b2.animate.shift(2*RIGHT + 4.8*UP))
+        self.play(label_b.animate.shift(0.6*UP + 8.2*RIGHT), label_n2.animate.shift(2.3*RIGHT + 2.8*UP))
 
         self.wait(2)
