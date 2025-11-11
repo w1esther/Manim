@@ -5,8 +5,8 @@ import math
 class AlinhaTriangulos(MovingCameraScene):
     def construct(self):
 
-        # malha = NumberPlane()
-        # self.play(FadeIn(malha))
+        malha = NumberPlane()
+        self.play(FadeIn(malha))
 
         A = np.array([0., 3., 0.])
         B = np.array([-2., 0., 0.])
@@ -114,7 +114,15 @@ class AlinhaTriangulos(MovingCameraScene):
 
         beta_label = MathTex(r"\beta").move_to(ang_beta.point_from_proportion(0.5) + 0.3*UP + 0.5*RIGHT)
 
+        beta_labelBAH = MathTex(r"\beta").move_to(ang_beta.point_from_proportion(0.5) + 0.3*UP + 0.5*RIGHT)
+
+        beta_labelCAH = MathTex(r"\beta").move_to(ang_beta.point_from_proportion(0.5) + 0.3*UP + 0.5*RIGHT)
+
         alfa_label = MathTex(r"\alpha").move_to(ang_alfa.point_from_proportion(0.5) + 0.2*UP + 0.5*LEFT)
+
+        alfa_labelBAH = MathTex(r"\alpha").move_to(ang_alfa.point_from_proportion(0.5) + 0.2*UP + 0.5*LEFT)
+
+        alfa_labelCAH = MathTex(r"\alpha").move_to(ang_alfa.point_from_proportion(0.5) + 0.2*UP + 0.5*LEFT)
 
         guardar_angulos_lados = VGroup()
         guardar_angulos_lados.add(ang_reto, ang_beta, ang_alfa, beta_label, alfa_label)
@@ -148,20 +156,23 @@ class AlinhaTriangulos(MovingCameraScene):
                       [0., 0., 1.]])
         # apply_matrix aplica a transformação diretamente às coordenadas
         self.play(guardar_tri_BAH.animate.apply_matrix(S, about_point=B), guardar_tri_CAH.animate.apply_matrix(S, about_point=C))
-
         self.play(guardar_tri_CAH.animate.move_to(2*DOWN+2*RIGHT))
 
-        self.play(guardar_tri_BAH.animate.move_to(2.08*UP+0.6*RIGHT))
+        guardar_tri_BAH.add(beta_labelBAH)
+        self.play(guardar_tri_BAH.animate.shift(1.33*UP+0.903*RIGHT))
         self.wait()
-        self.play(guardar_tri_BAH.animate.move_to(0.74*UP+2.6*RIGHT))
+        self.play(guardar_tri_BAH.animate.shift(1.34*DOWN+2*RIGHT))
+        guardar_tri_BAH.add(alfa_labelBAH)
         self.wait()
-        self.play(guardar_tri_BAH.animate.move_to(2.3*DOWN+2.7*LEFT))
+        self.play(guardar_tri_BAH.animate.shift(3.0*DOWN+5.3*LEFT))
 
         self.play(guardar_tri_CAH.animate.move_to(1.15*UP+1.95*RIGHT))
+        guardar_tri_CAH.add(alfa_labelCAH)
         self.wait()
         self.play(guardar_tri_CAH.animate.shift(0.76*LEFT+0.5*UP))
         self.wait()
         self.play(guardar_tri_CAH.animate.shift(0.35*LEFT+0.5*DOWN))
+        guardar_tri_CAH.add(beta_labelCAH)
         self.wait()
         self.play(guardar_tri_CAH.animate.shift(2.5*RIGHT+3*DOWN))
 
