@@ -5,8 +5,8 @@ import math
 class AlinhaTriangulos(MovingCameraScene):
     def construct(self):
 
-        malha = NumberPlane()
-        self.play(FadeIn(malha))
+        # malha = NumberPlane()
+        # self.play(FadeIn(malha))
 
         A = np.array([0., 3., 0.])
         B = np.array([-2., 0., 0.])
@@ -96,7 +96,7 @@ class AlinhaTriangulos(MovingCameraScene):
         guardar_tri_BAC = VGroup()
         guardar_tri_BAC.add(tri_BAC, ponto_A, ponto_B, ponto_C, label_A, label_B, label_C, label_a, label_b, label_c, linha_altura, label_m, label_n, label_H, pontoH, label_a2)
 
-        self.play(Create(guardar_tri_BAC), run_time=4)
+        self.play(Create(guardar_tri_BAC), run_time=8)
 
         ang_reto = RightAngle(AB, AC, length=0.4, quadrant=(1, 1), color=YELLOW)
 
@@ -148,14 +148,14 @@ class AlinhaTriangulos(MovingCameraScene):
         theta2 = -math.atan2(AC[1], AC[0])
 
         # 1) rotaciona em torno de B
-        self.play(guardar_tri_BAH.animate.rotate(theta, about_point=B), guardar_tri_CAH.animate.rotate(theta2, about_point=C))
+        self.play(guardar_tri_BAH.animate.rotate(theta, about_point=B), guardar_tri_CAH.animate.rotate(theta2, about_point=C), run_time=2)
 
         # 2) aplicar reflexão no eixo x (matriz 3x3 para Manim)
         S = np.array([[1., 0., 0.],
                       [0., -1., 0.],
                       [0., 0., 1.]])
         # apply_matrix aplica a transformação diretamente às coordenadas
-        self.play(guardar_tri_BAH.animate.apply_matrix(S, about_point=B), guardar_tri_CAH.animate.apply_matrix(S, about_point=C))
+        self.play(guardar_tri_BAH.animate.apply_matrix(S, about_point=B), guardar_tri_CAH.animate.apply_matrix(S, about_point=C), run_time=2)
         self.play(guardar_tri_CAH.animate.move_to(2*DOWN+2*RIGHT))
 
         guardar_tri_BAH.add(beta_labelBAH)
@@ -192,14 +192,28 @@ class AlinhaTriangulos(MovingCameraScene):
             r"\frac{\phantom{a}}{\phantom{b}} = \frac{\phantom{c}}{\phantom{d}}"
         ).move_to(5.5*RIGHT + 2*UP).scale(2)
 
-        self.play(label_a.animate.scale(2), label_c.animate.scale(2), label_m2.animate.scale(2), label_c2.animate.scale(2), FadeIn(relacao_1))
+        self.play(label_a.animate.set_color(PINK), label_c2.animate.set_color(PINK))
 
+        self.play(label_a.animate.scale(2), label_c2.animate.scale(2), FadeIn(relacao_1))
+        
         self.play(label_a.animate.shift(3.2*RIGHT+3*UP), label_c2.animate.shift(3.5*RIGHT + 4.8*UP))
+
+        self.play(label_m2.animate.set_color(GREEN), label_c.animate.set_color(GREEN))
+
+        self.play(label_m2.animate.scale(2), label_c.animate.scale(2))
+
         self.play(label_c.animate.shift(1*UP + 8*RIGHT), label_m2.animate.shift(6.8*RIGHT + 3.3*UP))
 
-        self.play(FadeIn(relacao_2), label_a2.animate.scale(2), label_b.animate.scale(2), label_b2.animate.scale(2), label_n2.animate.scale(2))
+        self.play(label_a2.animate.set_color(YELLOW), label_b2.animate.set_color(YELLOW))
+
+        self.play(FadeIn(relacao_2), label_a2.animate.scale(2), label_b2.animate.scale(2))
 
         self.play(label_a2.animate.shift(7.2*RIGHT+3*UP), label_b2.animate.shift(2*RIGHT + 4.8*UP))
+
+        self.play(label_b.animate.set_color(BLUE), label_n2.animate.set_color(BLUE))
+
+        self.play(label_b.animate.scale(2), label_n2.animate.scale(2))
+
         self.play(label_b.animate.shift(0.6*UP + 8.2*RIGHT), label_n2.animate.shift(2.3*RIGHT + 2.8*UP))
 
         self.play(self.camera.frame.animate.scale(0.40).shift(2*UP+3*RIGHT))
@@ -208,42 +222,64 @@ class AlinhaTriangulos(MovingCameraScene):
         grupo1.add(relacao_1, label_a, label_c2, label_c, label_m2)
         grupo2 = VGroup()
         grupo2.add(label_a2, label_b2, label_b, label_n2, relacao_2)
+
+        copia1 = grupo1.copy()
+        copia2 = grupo2.copy()
         
-        self.play(FadeIn(grupo1), FadeIn(grupo2))
+        self.play(FadeIn(grupo1), FadeIn(grupo2), FadeIn(copia1), FadeIn(copia2))
+        self.play(copia1.animate.scale(0.5).shift(1.5*UP+1.5*LEFT), copia2.animate.scale(0.5).shift(1.5*UP+3.2*LEFT))
         
-        relacao_1_2 = MathTex(r"b^2 = a \cdot m").shift((3.5*RIGHT)+(2.5*UP))
-        relacao_2_2 = MathTex(r"c^2 = a \cdot n").shift((3.5*RIGHT)+(1.5*UP))
+        relacao_1_2 = MathTex(r"c^2 = a \cdot m").shift((3.5*RIGHT)+(2.5*UP))
+        copia3 = relacao_1_2.copy()
+        relacao_2_2 = MathTex(r"b^2 = a \cdot n").shift((3.5*RIGHT)+(1.5*UP))
+        copia4 = relacao_2_2.copy()
         mais = MathTex("+").shift((RIGHT*2.2 + 2.0*UP))
+        copia5 = mais.copy()
+
 
         self.play(Transform(grupo1, relacao_1_2), Transform(grupo2, relacao_2_2), FadeIn(mais))
 
+        self.play(copia3.animate.scale(0.7).shift(1.3*UP+2*RIGHT), copia4.animate.scale(0.7).shift(1.8*UP+2*RIGHT), copia5.animate.scale(0.7).shift(1.4*UP + 2.4*RIGHT))
+
         resultado = MathTex(r"b^2 + c^2 = a \cdot m + a \cdot n").shift(0.7*UP+3.5*RIGHT)
 
-        resultado_2 = MathTex(r"b^2 + c^2 = a (m + n)").scale(1.5).shift(1.7*UP+3.5*RIGHT)
+        copia6 = resultado.copy()
 
-        resultado_3 = MathTex(r"b^2 + c^2 = a \cdot a").shift(1.7*UP+3.5*RIGHT).scale(1.5)
+        resultado_2 = MathTex(r"b^2 + c^2 = a (m + n)").scale(1.5).shift(1.5*UP+2.5*RIGHT)
 
-        resultado_4 = MathTex(r"b^2 + c^2 = a^2").shift(1.7*UP+3.5*RIGHT).scale(1.5)
+        copia7 = resultado_2.copy()
+
+        resultado_3 = MathTex(r"b^2 + c^2 = a \cdot a").shift(1.5*UP+2.5*RIGHT).scale(1.5)
+
+        copia8 = resultado_3.copy()
+
+        resultado_4 = MathTex(r"b^2 + c^2 = a^2").shift(1.5*UP+2.9*RIGHT).scale(1.5)
 
         self.play(FadeIn(resultado))
 
         self.play(FadeOut(grupo1), FadeOut(grupo2), FadeOut(mais))
 
+        self.play(copia6.animate.scale(0.7).shift(1.9*RIGHT+2*UP))
+
         self.play(resultado.animate.scale(1.5).shift(1.3*UP+ 0.5*LEFT))
 
         self.play(Transform(resultado, resultado_2))
+
+        self.play(copia7.animate.scale(0.5).shift(3*RIGHT + 0.6*UP))
 
         self.wait()
 
         self.play(Transform(resultado, resultado_3))
 
+        self.play(copia8.animate.scale(0.5).shift(3*RIGHT + 0.2*UP))
+
         self.wait()
 
-        self.play(Transform(resultado, resultado_4))
+        self.play(Transform(resultado, resultado_4), FadeOut(copia1), FadeOut(copia2), FadeOut(copia3), FadeOut(copia4), FadeOut(copia5), FadeOut(copia6), FadeOut(copia7), FadeOut(copia8))
 
         self.play(resultado.animate.scale(1.7))
 
-        teorema = Text('Teorema de Pitágoras').shift(3*UP + 3.3*RIGHT)
+        teorema = Text('Teorema de Pitágoras').shift(3*UP + 3.0*RIGHT)
 
         label_aa = MathTex("a").shift(0.3*DOWN + 3.5*LEFT)
         label_bb = MathTex("b").shift(1.5*UP + 1*LEFT)
