@@ -5,8 +5,8 @@ import math
 class AlinhaTriangulos(MovingCameraScene):
     def construct(self):
 
-        malha = NumberPlane()
-        self.play(FadeIn(malha))
+        # malha = NumberPlane()
+        # self.play(FadeIn(malha))
 
         A = np.array([0., 3., 0.])
         B = np.array([-2., 0., 0.])
@@ -44,16 +44,16 @@ class AlinhaTriangulos(MovingCameraScene):
         ponto_A3_certo = Dot(point=A, color=RED)
         pontoH2_certo = Dot(point=H, color=RED)
         pontoH3_certo = Dot(point=H, color=RED)
-        label_A2_certo = MathTex("A").shift(4.5*LEFT + 3*DOWN).scale(0.6)
-        label_B2_certo = MathTex("B").shift(8.8*LEFT + 3*DOWN).scale(0.6)
-        label_C2_certo = MathTex("C").shift(2.0*RIGHT + 3*DOWN).scale(0.6)
-        label_A3_certo = MathTex("A").shift(4.05*LEFT + 3*DOWN).scale(0.6)
-        label_H2_certo = MathTex("H").shift(7.2*LEFT + 1*DOWN).scale(0.6)
-        label_H3_certo = MathTex("H").shift(2.1*LEFT + 0.2*DOWN).scale(0.6)
-        label_m2_certo = MathTex("m").shift(8.3*LEFT+1.8*DOWN)
-        label_n2_certo = MathTex("n").shift(0.0*RIGHT+1.3*DOWN)
-        label_c2_certo = MathTex("c").shift(7*LEFT+3.3*DOWN)
-        label_b2_certo = MathTex("b").shift(1.5*LEFT+3.3*DOWN)
+        label_A2_certo = MathTex("A").shift(0.5*LEFT + 3*DOWN)
+        label_B2_certo = MathTex("B").shift(5*LEFT + 3*DOWN)
+        label_C2_certo = MathTex("C").shift(6.3*RIGHT + 3*DOWN)
+        label_A3_certo = MathTex("A").shift(0.2*RIGHT+3*DOWN)
+        label_H2_certo = MathTex("H").shift(3.2*LEFT + 1*DOWN)
+        label_H3_certo = MathTex("H").shift(2.1*RIGHT + 0.2*DOWN)
+        label_m2_certo = MathTex("m").shift(4.3*LEFT+1.8*DOWN)
+        label_n2_certo = MathTex("n").shift(4.2*RIGHT+1.3*DOWN)
+        label_c2_certo = MathTex("c").shift(3*LEFT+3.3*DOWN)
+        label_b2_certo = MathTex("b").shift(2.5*RIGHT+3.3*DOWN)
 
         label_A = MathTex("A").next_to(A, UP, buff=0.1).scale(0.6)
         label_A2 = MathTex("A").next_to(A, UP, buff=0.1).scale(0.6)
@@ -67,8 +67,8 @@ class AlinhaTriangulos(MovingCameraScene):
         label_H3 = MathTex("H").next_to(H, DOWN, buff=0.1).scale(0.6)
 
         # a → oposto de A (entre B e C)
-        label_a = MathTex("a").move_to((B + C) / 2 + 0.5*DOWN + 0.5 * LEFT)
-        label_a2 = MathTex("a").move_to((B + C) / 2 + 0.5*DOWN + 0.5 * LEFT)
+        label_a = MathTex("a").move_to((B + C) / 2 + 0.5*DOWN)
+        label_a2 = MathTex("a").move_to((B + C) / 2 + 0.5*DOWN)
 
         # b → oposto de B (entre A e C)
         label_b = MathTex("b").move_to((A + C) / 2 + 0.5*UP)
@@ -77,10 +77,10 @@ class AlinhaTriangulos(MovingCameraScene):
         label_c = MathTex("c").move_to((A + B) / 2 + 0.5*LEFT)
         label_c2 = MathTex("c").move_to((A + B) / 2 + 0.5*LEFT)
 
-        label_m = MathTex("m").move_to((B + C)/2 + 0.2 * UP + 2*LEFT).scale(0.6)
+        label_m = MathTex("m").move_to((B + C)/2 + 0.2 * DOWN + 2*LEFT).scale(0.6)
         label_m2 = MathTex("m").move_to((B + C)/2 + 0.2 * DOWN + 2*LEFT).scale(0.6)
 
-        label_n = MathTex("n").move_to((B + C)/2 + 0.2 * UP + RIGHT).scale(0.6)
+        label_n = MathTex("n").move_to((B + C)/2 + 0.2 * DOWN + RIGHT).scale(0.6)
         label_n2 = MathTex("n").move_to((B + C)/2 + 0.2 * DOWN + RIGHT).scale(0.6)
 
 
@@ -112,11 +112,11 @@ class AlinhaTriangulos(MovingCameraScene):
 
         ang_alfa_CAH = Angle(CA, CB, radius=0.6, other_angle=False, color=PURPLE)
 
-        beta_label = MathTex(r"\beta").move_to(ang_beta.point_from_proportion(0.5) + 0.3*UP + 0.3*RIGHT)
+        beta_label = MathTex(r"\beta").move_to(ang_beta.point_from_proportion(0.5) + 0.3*UP + 0.5*RIGHT)
 
-        beta_labelBAH = MathTex(r"\beta").move_to(ang_beta.point_from_proportion(0.5) + 0.3*UP + 0.3*RIGHT)
+        beta_labelBAH = MathTex(r"\beta").move_to(ang_beta.point_from_proportion(0.5) + 0.3*UP + 0.5*RIGHT)
 
-        beta_labelCAH = MathTex(r"\beta").move_to(ang_beta.point_from_proportion(0.5) + 0.3*UP + 0.3*RIGHT)
+        beta_labelCAH = MathTex(r"\beta").move_to(ang_beta.point_from_proportion(0.5) + 0.3*UP + 0.5*RIGHT)
 
         alfa_label = MathTex(r"\alpha").move_to(ang_alfa.point_from_proportion(0.5) + 0.2*UP + 0.5*LEFT)
 
@@ -158,15 +158,13 @@ class AlinhaTriangulos(MovingCameraScene):
         self.play(guardar_tri_BAH.animate.apply_matrix(S, about_point=B), guardar_tri_CAH.animate.apply_matrix(S, about_point=C), run_time=2)
         self.play(guardar_tri_CAH.animate.move_to(2*DOWN+2*RIGHT))
 
-        self.play(self.camera.frame.animate.scale(1.3))
-
         guardar_tri_BAH.add(beta_labelBAH)
         self.play(guardar_tri_BAH.animate.shift(1.33*UP+0.903*RIGHT))
         self.wait()
         self.play(guardar_tri_BAH.animate.shift(1.34*DOWN+2*RIGHT))
         guardar_tri_BAH.add(alfa_labelBAH)
         self.wait()
-        self.play(guardar_tri_BAH.animate.shift(3.0*DOWN+9.3*LEFT))
+        self.play(guardar_tri_BAH.animate.shift(3.0*DOWN+5.3*LEFT))
 
         self.play(guardar_tri_CAH.animate.move_to(1.15*UP+1.95*RIGHT))
         guardar_tri_CAH.add(alfa_labelCAH)
@@ -176,10 +174,11 @@ class AlinhaTriangulos(MovingCameraScene):
         self.play(guardar_tri_CAH.animate.shift(0.35*LEFT+0.5*DOWN))
         guardar_tri_CAH.add(beta_labelCAH)
         self.wait()
-        self.play(guardar_tri_CAH.animate.shift(1.8*LEFT+3*DOWN))
+        self.play(guardar_tri_CAH.animate.shift(2.5*RIGHT+3*DOWN))
 
-        self.play(guardar_tri_BAC.animate.shift(5.5*LEFT), guardar_angulos_lados.animate.shift(5.5*LEFT))
+        self.play(guardar_tri_BAC.animate.shift(4*LEFT), guardar_angulos_lados.animate.shift(4*LEFT))
         self.play(FadeOut(linha_altura), FadeOut(label_m), FadeOut(label_n), FadeOut(pontoH), FadeOut(label_H))
+        self.play(self.camera.frame.animate.scale(1.5))
         self.wait()
 
 
@@ -193,39 +192,17 @@ class AlinhaTriangulos(MovingCameraScene):
             r"\frac{\phantom{a}}{\phantom{b}} = \frac{\phantom{c}}{\phantom{d}}"
         ).move_to(5.5*RIGHT + 2*UP).scale(2)
 
-        self.play(label_a.animate.set_color(BLUE), label_c.animate.set_color(BLUE))
+        self.play(label_a.animate.set_color(PINK), label_c2.animate.set_color(PINK))
 
-        self.play(label_a.animate.scale(2), label_c.animate.scale(2), FadeIn(relacao_1))
+        self.play(label_a.animate.scale(2), label_c2.animate.scale(2), FadeIn(relacao_1))
         
-        self.play(label_a.animate.shift(5.2*RIGHT+3*UP), label_c.animate.shift(7.5*RIGHT))
+        self.play(label_a.animate.shift(3.2*RIGHT+3*UP), label_c2.animate.shift(3.5*RIGHT + 4.8*UP))
 
-        self.play(label_m2.animate.set_color(GREEN), label_c2.animate.set_color(GREEN))
+        self.play(label_m2.animate.set_color(GREEN), label_c.animate.set_color(GREEN))
 
-        self.play(label_m2.animate.scale(2), label_c2.animate.scale(2))
+        self.play(label_m2.animate.scale(2), label_c.animate.scale(2))
 
-        self.play(label_c2.animate.shift(5.8*UP + 9.5*RIGHT), label_m2.animate.shift(10.8*RIGHT + 3.3*UP))
-
-        base = Line(LEFT * 0.5, RIGHT * 0.5).shift(1.5*RIGHT + 2*UP)
-        base2 = Line(LEFT * 0.5, RIGHT * 0.5).shift(1.5*RIGHT + 2*UP)
-        base.rotate(45*DEGREES)
-        base2.rotate(-45*DEGREES)
-        linha_pontilhada1 = DashedVMobject(base, num_dashes=10).set_color(YELLOW)
-        linha_pontilhada2 = DashedVMobject(base2, num_dashes=10).set_color(YELLOW)
-        self.play(Write(linha_pontilhada1), Write(linha_pontilhada2))
-
-        grupo1 = VGroup()
-        grupo1.add(relacao_1, label_a, label_c2, label_c, label_m2)
-
-        relacao_1_1_2 = MathTex(r"c \cdot c = a \cdot m").shift((2.0*RIGHT)+(2.0*UP)).scale(1.3)
-
-        self.play(Transform(grupo1, relacao_1_1_2), FadeOut(linha_pontilhada1), FadeOut(linha_pontilhada2))
-        relacao_1_2 = MathTex(r"c^2 = a \cdot m").shift((2.0*RIGHT)+(2.0*UP))
-
-        self.wait()
-
-        self.play(Transform(grupo1, relacao_1_2))
-
-        self.wait()
+        self.play(label_c.animate.shift(1*UP + 8*RIGHT), label_m2.animate.shift(6.8*RIGHT + 3.3*UP))
 
         self.play(label_a2.animate.set_color(YELLOW), label_b2.animate.set_color(YELLOW))
 
@@ -239,18 +216,20 @@ class AlinhaTriangulos(MovingCameraScene):
 
         self.play(label_b.animate.shift(0.6*UP + 8.2*RIGHT), label_n2.animate.shift(2.3*RIGHT + 2.8*UP))
 
-        # self.play(self.camera.frame.animate.scale(0.40).shift(2*UP+3*RIGHT))
+        self.play(self.camera.frame.animate.scale(0.40).shift(2*UP+3*RIGHT))
 
+        grupo1 = VGroup()
+        grupo1.add(relacao_1, label_a, label_c2, label_c, label_m2)
         grupo2 = VGroup()
         grupo2.add(label_a2, label_b2, label_b, label_n2, relacao_2)
 
         copia1 = grupo1.copy()
         copia2 = grupo2.copy()
         
-        self.play(FadeIn(grupo1))
+        self.play(FadeIn(grupo1), FadeIn(grupo2), FadeIn(copia1), FadeIn(copia2))
+        self.play(copia1.animate.scale(0.5).shift(1.5*UP+1.5*LEFT), copia2.animate.scale(0.5).shift(1.5*UP+3.2*LEFT))
         
-        # self.play(copia1.animate.scale(0.5).shift(1.5*UP+1.5*LEFT), copia2.animate.scale(0.5).shift(1.5*UP+3.2*LEFT))
-        
+        relacao_1_2 = MathTex(r"c^2 = a \cdot m").shift((3.5*RIGHT)+(2.5*UP))
         copia3 = relacao_1_2.copy()
         relacao_2_2 = MathTex(r"b^2 = a \cdot n").shift((3.5*RIGHT)+(1.5*UP))
         copia4 = relacao_2_2.copy()
@@ -308,6 +287,6 @@ class AlinhaTriangulos(MovingCameraScene):
 
         self.play(FadeIn(teorema), FadeIn(label_aa), FadeIn(label_bb), FadeIn(label_cc))
 
-        # self.play(self.camera.frame.animate.scale(2).move_to(ORIGIN))
+        self.play(self.camera.frame.animate.scale(2).move_to(ORIGIN))
 
         self.wait(2)
