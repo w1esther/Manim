@@ -285,13 +285,26 @@ class AlinhaTriangulos(MovingCameraScene):
 
         resultado = MathTex(r"b^2 + c^2 = a \cdot m + a \cdot n").shift(2*UP+2.9*RIGHT).scale(1.5)
 
-        bc = MathTex(r"b^2 + c^2").scale(1.5).shift(2*UP+0.2*RIGHT)
+        bc = MathTex(r"b^2 + c^2").scale(1.5).shift(2*UP+0.43*RIGHT)
 
         self.play(Transform(relacoes, resultado), FadeOut(mais))
 
-        self.play(Add(bc))
+        self.add(bc)
 
         self.wait()
+
+        resultado_2 = MathTex(r"= a (m + n)").scale(1.5).next_to(bc, RIGHT, buff=0.3).shift(0.15*DOWN)
+
+        self.play(Transform(relacoes, resultado_2))
+
+        self.wait()
+
+        resultado_3 = MathTex(r"= a \cdot a").next_to(bc, RIGHT, buff=0.6).scale(1.5).shift(0.15*DOWN)
+
+        self.play(Transform(relacoes, resultado_3))
+
+        self.wait()
+
 
         # copia1 = grupo1.copy()
         # copia2 = grupo2.copy()
@@ -311,9 +324,6 @@ class AlinhaTriangulos(MovingCameraScene):
 
 
         # copia6 = resultado.copy()
-
-        resultado_2 = MathTex(r"b^2 + c^2 = a (m + n)").scale(1.5).shift(1.5*UP+2.5*RIGHT)
-
         # copia7 = resultado_2.copy()
 
         resultado_3 = MathTex(r"b^2 + c^2 = a \cdot a").shift(1.5*UP+2.5*RIGHT).scale(1.5)
