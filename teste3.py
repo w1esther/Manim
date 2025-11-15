@@ -51,9 +51,13 @@ class AlinhaTriangulos(MovingCameraScene):
         label_H2_certo = MathTex("H").shift(7.2*LEFT + 1*DOWN).scale(0.6)
         label_H3_certo = MathTex("H").shift(2.1*LEFT + 0.2*DOWN).scale(0.6)
         label_m2_certo = MathTex("m").shift(8.3*LEFT+1.8*DOWN)
+        label_m2_copia = label_m2_certo.copy()
         label_n2_certo = MathTex("n").shift(0.0*RIGHT+1.3*DOWN)
+        label_n2_copia = label_n2_certo.copy()
         label_c2_certo = MathTex("c").shift(7*LEFT+3.3*DOWN)
+        label_c2_copia = label_c2_certo.copy()
         label_b2_certo = MathTex("b").shift(1.5*LEFT+3.3*DOWN)
+        label_b2_copia = label_b2_certo.copy()
 
         label_A = MathTex("A").next_to(A, UP, buff=0.1).scale(0.6)
         label_A2 = MathTex("A").next_to(A, UP, buff=0.1).scale(0.6)
@@ -69,13 +73,16 @@ class AlinhaTriangulos(MovingCameraScene):
         # a → oposto de A (entre B e C)
         label_a = MathTex("a").move_to((B + C) / 2 + 0.5*DOWN + 0.5 * LEFT)
         label_a2 = MathTex("a").move_to((B + C) / 2 + 0.5*DOWN + 0.5 * LEFT)
+        label_a_copia = label_a.copy()
 
         # b → oposto de B (entre A e C)
         label_b = MathTex("b").move_to((A + C) / 2 + 0.5*UP)
         label_b2 = MathTex("b").move_to((A + C) / 2 + 0.5*UP)
+        label_b_copia = label_b.copy()
         # c → oposto de C (entre A e B)
         label_c = MathTex("c").move_to((A + B) / 2 + 0.5*LEFT)
         label_c2 = MathTex("c").move_to((A + B) / 2 + 0.5*LEFT)
+        label_c_copia = label_c.copy()
 
         label_m = MathTex("m").move_to((B + C)/2 + 0.2 * UP + 2*LEFT).scale(0.6)
         label_m2 = MathTex("m").move_to((B + C)/2 + 0.2 * DOWN + 2*LEFT).scale(0.6)
@@ -94,7 +101,7 @@ class AlinhaTriangulos(MovingCameraScene):
         # triângulo maior BAC
         tri_BAC = Polygon(B, A, C, color=BLUE)
         guardar_tri_BAC = VGroup()
-        guardar_tri_BAC.add(tri_BAC, ponto_A, ponto_B, ponto_C, label_A, label_B, label_C, label_a, label_b, label_c, linha_altura, label_m, label_n, label_H, pontoH, label_a2)
+        guardar_tri_BAC.add(tri_BAC, ponto_A, ponto_B, ponto_C, label_A, label_B, label_C, label_a, label_b, label_c, linha_altura, label_m, label_n, label_H, pontoH, label_a2, label_a_copia, label_b_copia, label_c_copia)
 
         self.play(Create(guardar_tri_BAC), run_time=8)
 
@@ -184,6 +191,7 @@ class AlinhaTriangulos(MovingCameraScene):
 
 
         self.play(Transform(label_H2, label_H2_certo), Transform(label_H3, label_H3_certo), Transform(label_m2, label_m2_certo), Transform(label_A2, label_A2_certo), Transform(label_A3, label_A3_certo), Transform(label_n2, label_n2_certo), Transform(label_b2, label_b2_certo), Transform(label_c2, label_c2_certo), Transform(label_B2, label_B2_certo), Transform(label_C2, label_C2_certo))
+        self.add(label_c2_copia, label_b2_copia, label_m2_copia, label_n2_copia)
 
         relacao_1 = MathTex(
             r"\frac{\phantom{a}}{\phantom{b}} = \frac{\phantom{c}}{\phantom{d}}"
@@ -305,6 +313,11 @@ class AlinhaTriangulos(MovingCameraScene):
 
         self.wait()
 
+        resultado_4 = MathTex(r"= a^2").next_to(bc, RIGHT, buff=0.6).scale(1.5)
+
+        self.play(Transform(relacoes, resultado_4))
+
+        self.wait()
 
         # copia1 = grupo1.copy()
         # copia2 = grupo2.copy()
@@ -329,8 +342,6 @@ class AlinhaTriangulos(MovingCameraScene):
         resultado_3 = MathTex(r"b^2 + c^2 = a \cdot a").shift(1.5*UP+2.5*RIGHT).scale(1.5)
 
         # copia8 = resultado_3.copy()
-
-        resultado_4 = MathTex(r"b^2 + c^2 = a^2").shift(1.5*UP+2.9*RIGHT).scale(1.5)
 
         self.play(FadeIn(resultado))
 
