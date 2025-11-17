@@ -5,8 +5,8 @@ import math
 class AlinhaTriangulos(MovingCameraScene):
     def construct(self):
 
-        malha = NumberPlane()
-        self.play(FadeIn(malha))
+        # malha = NumberPlane()
+        # self.play(FadeIn(malha))
 
         A = np.array([0., 3., 0.])
         B = np.array([-2., 0., 0.])
@@ -180,7 +180,7 @@ class AlinhaTriangulos(MovingCameraScene):
         self.play(guardar_tri_BAH.animate.apply_matrix(S, about_point=B), guardar_tri_CAH.animate.apply_matrix(S, about_point=C), run_time=2)
         self.play(guardar_tri_CAH.animate.move_to(2*DOWN+2*RIGHT))
 
-        self.play(self.camera.frame.animate.scale(1.3))
+        self.play(self.camera.frame.animate.scale(1.3).shift(2*LEFT))
 
         self.play(grupo_obs.animate.shift(1*UP + 0.5*LEFT))
 
@@ -337,6 +337,11 @@ class AlinhaTriangulos(MovingCameraScene):
         self.play(Transform(relacoes, resultado_4), FadeOut(resultado_22))
 
         self.wait()
+
+        teorema = Text('Teorema de Pitágoras').shift(3*UP + 1.5*RIGHT)
+
+        self.play(FadeIn(teorema))
+
 
         # copia1 = grupo1.copy()
         # copia2 = grupo2.copy()
