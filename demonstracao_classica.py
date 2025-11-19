@@ -25,6 +25,8 @@ class DemonstracaoClassicaPitagoras(MovingCameraScene):
         label_b_t3 = MathTex("b", color=GRAY).shift(1.5*RIGHT + 3*UP)
         label_b_t4 = MathTex("b", color=GRAY).shift(1.5*DOWN + 3*RIGHT)
 
+        label_c_t1 = MathTex("c", color = WHITE).shift(1*LEFT+1*DOWN)
+
         self.play(FadeIn(triangulo1))
         self.play(FadeIn(label_a_t1), FadeIn(label_b_t1))
 
@@ -36,6 +38,17 @@ class DemonstracaoClassicaPitagoras(MovingCameraScene):
 
         self.play(triangulo4.animate.rotate(-270*DEGREES).shift(0.5*UP + 2.5*RIGHT))
         self.play(FadeIn(label_a_t4), FadeIn(label_b_t4))
+
+        quadrado = Square(side_length=3.55, fill_color = GREEN, fill_opacity = 1)
+        quadrado.rotate(-33.5*DEGREES, about_point=quadrado.get_center())
+        quadrado.set_stroke(GREEN)
+
+        quadrado2 = Square(side_length=5)
+        self.play(FadeIn(quadrado2))
+
+        self.play(FadeIn(label_c_t1))
+
+        self.play(FadeIn(quadrado))
 
         self.wait(2)
 

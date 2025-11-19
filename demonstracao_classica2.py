@@ -37,6 +37,12 @@ class DemonstracaoClassicaPitagoras(MovingCameraScene):
 
         self.play(FadeIn(label_b_t1), FadeIn(label_b_t2), FadeIn(label_b_t3), FadeIn(label_b_t4))
 
+        quadrado = Square(side_length=3.55, fill_color = GREEN, fill_opacity = 1)
+        quadrado.rotate(-33.5*DEGREES, about_point=quadrado.get_center())
+        quadrado.set_stroke(GREEN)
+
+        self.play(FadeIn(quadrado))
+
         # self.play(triangulo3.animate.rotate(-180*DEGREES).shift(3*UP + 2*RIGHT))
         # self.play(FadeIn(label_a_t3))
 
