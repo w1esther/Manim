@@ -46,9 +46,9 @@ class DemonstracaoClassicaPitagoras(MovingCameraScene):
         quadrado2 = Square(side_length=5)
         self.play(FadeIn(quadrado2))
 
-        self.play(FadeIn(label_c_t1))
-
         self.play(FadeIn(quadrado))
+        
+        self.play(FadeIn(label_c_t1))
 
         self.wait(2)
 
