@@ -117,6 +117,7 @@ class DemonstracaoClassicaPitagoras(MovingCameraScene):
         igual = MathTex("=").shift(6*DOWN + 5.5*RIGHT)
 
         self.play(FadeIn(mais), FadeIn(igual), FadeIn(teorema))
+        self.play(c_quadrado.animate.shift(4*UP + 0.7*RIGHT), igual.animate.shift(3.9*UP+2.7*RIGHT),label_a_t2.animate.shift(4*UP+4*RIGHT), mais.animate.shift(3.9*UP+5*RIGHT), label_b_t1.animate.shift(4*UP + 7*RIGHT))
 
         # self.play(quadrado.animate.shift(5*RIGHT))
 
