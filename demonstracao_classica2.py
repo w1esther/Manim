@@ -49,8 +49,12 @@ class DemonstracaoClassicaPitagoras(MovingCameraScene):
         self.play(FadeIn(triangulo1))
         self.play(FadeIn(label_a_t1), FadeIn(label_b_t1), FadeIn(label_c_t1))
 
-        self.play(triangulo2.animate.rotate(-90*DEGREES).shift(0.5*LEFT + 2.5*UP),triangulo3.animate.rotate(-180*DEGREES).shift(3*UP + 2*RIGHT), triangulo4.animate.rotate(-270*DEGREES).shift(0.5*UP + 2.5*RIGHT))
-        self.play(FadeIn(label_a_t2), FadeIn(label_a_t3), FadeIn(label_a_t4), FadeIn(label_b_t2), FadeIn(label_b_t3), FadeIn(label_b_t4), FadeIn(label_c_t2), FadeIn(label_c_t3), FadeIn(label_c_t4))
+        self.play(triangulo2.animate.rotate(-90*DEGREES).shift(0.5*LEFT + 2.5*UP))
+        self.play(FadeIn(label_a_t2), FadeIn(label_b_t2),FadeIn(label_c_t2))
+        self.play(triangulo3.animate.rotate(-180*DEGREES).shift(3*UP + 2*RIGHT))
+        self.play(FadeIn(label_a_t3), FadeIn(label_b_t3), FadeIn(label_c_t3)) 
+        self.play(triangulo4.animate.rotate(-270*DEGREES).shift(0.5*UP + 2.5*RIGHT))
+        self.play(FadeIn(label_a_t4), FadeIn(label_b_t4), FadeIn(label_c_t4))
         
         self.wait()
 
