@@ -114,10 +114,12 @@ class DemonstracaoClassicaPitagoras(MovingCameraScene):
         teorema = Text('Teorema de \n  Pitágoras', font_size=60).shift(7.5*RIGHT)
 
         mais = MathTex("+").shift(0.8*RIGHT + 6*DOWN)
+        mais_2 = mais.copy()
         igual = MathTex("=").shift(6*DOWN + 5.5*RIGHT)
+        igual_2 = igual.copy()
 
         self.play(FadeIn(mais), FadeIn(igual), FadeIn(teorema))
-        self.play(c_quadrado.animate.shift(4*UP + 0.7*RIGHT), igual.animate.shift(3.9*UP+2.7*RIGHT),label_a_t2.animate.shift(4*UP+4*RIGHT), mais.animate.shift(3.9*UP+5*RIGHT), label_b_t1.animate.shift(4*UP + 7*RIGHT))
+        self.play(c_quadrado.animate.shift(4*UP + 0.7*RIGHT), igual_2.animate.shift(3.9*UP+2.7*RIGHT),label_a_t2.animate.shift(4*UP+4*RIGHT), mais_2.animate.shift(3.9*UP+5*RIGHT), label_b_t1.animate.shift(4*UP + 7*RIGHT))
 
         # self.play(quadrado.animate.shift(5*RIGHT))
 
