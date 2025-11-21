@@ -128,8 +128,11 @@ class DemonstracaoClassicaPitagoras(MovingCameraScene):
         igual = MathTex("=").shift(6*DOWN + 5.5*RIGHT)
         igual_2 = igual.copy()
 
+        grupo_teorema = VGroup()
+        grupo_teorema.add(c_quadrado, igual_2, label_a_t2, mais_2, label_b_t1)
+
         self.play(FadeIn(mais), FadeIn(igual), FadeIn(teorema))
-        self.play(c_quadrado.animate.shift(4*UP + 0.7*RIGHT), igual_2.animate.shift(3.9*UP+2.7*RIGHT),label_a_t2.animate.shift(4*UP+4*RIGHT), mais_2.animate.shift(3.9*UP+5*RIGHT), label_b_t1.animate.shift(4*UP + 7*RIGHT))
+        self.play(c_quadrado.animate.shift(4*UP + 0.45*RIGHT), igual_2.animate.shift(3.9*UP+3*RIGHT),label_a_t2.animate.shift(4*UP+4.5*RIGHT), mais_2.animate.shift(3.9*UP+5.7*RIGHT), label_b_t1.animate.shift(4*UP + 7.6*RIGHT))
 
         # self.play(quadrado.animate.shift(5*RIGHT))
 

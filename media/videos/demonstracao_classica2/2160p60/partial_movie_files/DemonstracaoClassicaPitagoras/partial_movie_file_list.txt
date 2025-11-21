@@ -29,5 +29,5 @@ file 'file:C:/Users/w1mar/OneDrive/Documentos/GitHub/Manim/media/videos/demonstr
 file 'file:C:/Users/w1mar/OneDrive/Documentos/GitHub/Manim/media/videos/demonstracao_classica2/2160p60/partial_movie_files/DemonstracaoClassicaPitagoras/1497488878_3944608866_3221140792.mp4'
 file 'file:C:/Users/w1mar/OneDrive/Documentos/GitHub/Manim/media/videos/demonstracao_classica2/2160p60/partial_movie_files/DemonstracaoClassicaPitagoras/3251744944_2943210444_158647473.mp4'
 file 'file:C:/Users/w1mar/OneDrive/Documentos/GitHub/Manim/media/videos/demonstracao_classica2/2160p60/partial_movie_files/DemonstracaoClassicaPitagoras/3251744944_2434755440_2720474015.mp4'
-file 'file:C:/Users/w1mar/OneDrive/Documentos/GitHub/Manim/media/videos/demonstracao_classica2/2160p60/partial_movie_files/DemonstracaoClassicaPitagoras/3251744944_1175723316_1695965870.mp4'
-file 'file:C:/Users/w1mar/OneDrive/Documentos/GitHub/Manim/media/videos/demonstracao_classica2/2160p60/partial_movie_files/DemonstracaoClassicaPitagoras/3251744944_1831374817_2271482700.mp4'
+file 'file:C:/Users/w1mar/OneDrive/Documentos/GitHub/Manim/media/videos/demonstracao_classica2/2160p60/partial_movie_files/DemonstracaoClassicaPitagoras/3251744944_230379416_1695965870.mp4'
+file 'file:C:/Users/w1mar/OneDrive/Documentos/GitHub/Manim/media/videos/demonstracao_classica2/2160p60/partial_movie_files/DemonstracaoClassicaPitagoras/3251744944_1831374817_2446665209.mp4'
