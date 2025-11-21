@@ -97,7 +97,7 @@ class DemonstracaoClassicaPitagoras(MovingCameraScene):
 
         self.wait()
 
-        self.play(t3.animate.shift(1.95*LEFT), t2.animate.shift(2.95*RIGHT + 1.95*DOWN), t1.animate.shift(2.95*UP))
+        self.play(t3.animate.shift(1.955*LEFT), t2.animate.shift(2.955*RIGHT + 1.955*DOWN), t1.animate.shift(2.955*UP))
         self.bring_to_front(label_c_t4)
         self.bring_to_front(label_c_t3)
 
