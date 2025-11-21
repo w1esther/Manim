@@ -50,6 +50,7 @@ class DemonstracaoClassicaPitagoras(MovingCameraScene):
         self.play(FadeIn(label_a_t1), FadeIn(label_b_t1), FadeIn(label_c_t1))
 
         self.play(triangulo2.animate.rotate(-90*DEGREES).shift(0.5*LEFT + 2.5*UP),triangulo3.animate.rotate(-180*DEGREES).shift(3*UP + 2*RIGHT), triangulo4.animate.rotate(-270*DEGREES).shift(0.5*UP + 2.5*RIGHT))
+        self.play(FadeIn(label_a_t2), FadeIn(label_a_t3), FadeIn(label_a_t4), FadeIn(label_b_t2), FadeIn(label_b_t3), FadeIn(label_b_t4), FadeIn(label_c_t2), FadeIn(label_c_t3), FadeIn(label_c_t4))
         
         self.wait()
 
@@ -58,11 +59,11 @@ class DemonstracaoClassicaPitagoras(MovingCameraScene):
 
         self.play(FadeIn(quadrado_inv), FadeIn(quadrado_inv2))
 
-        self.play(FadeIn(label_a_t2), FadeIn(label_a_t3), FadeIn(label_a_t4))
+        # self.play(FadeIn(label_a_t2), FadeIn(label_a_t3), FadeIn(label_a_t4))
 
         self.wait()
 
-        self.play(FadeIn(label_b_t2), FadeIn(label_b_t3), FadeIn(label_b_t4))
+        # self.play(FadeIn(label_b_t2), FadeIn(label_b_t3), FadeIn(label_b_t4))
 
         quadrado = Square(side_length=3.55, fill_color = GREEN, fill_opacity = 1)
         quadrado.rotate(-33.5*DEGREES, about_point=quadrado.get_center())
@@ -72,8 +73,11 @@ class DemonstracaoClassicaPitagoras(MovingCameraScene):
 
         self.play(FadeIn(quadrado), FadeIn(quadrado2))
         self.bring_to_front(label_c_t1)
+        self.bring_to_front(label_c_t2)
+        self.bring_to_front(label_c_t4)
+        self.bring_to_front(label_c_t3)
 
-        self.play(FadeIn(label_c_t1), FadeIn(label_c_t2), FadeIn(label_c_t3), FadeIn(label_c_t4))
+        # self.play(FadeIn(label_c_t1), FadeIn(label_c_t2), FadeIn(label_c_t3), FadeIn(label_c_t4))
 
         mult = MathTex(r"\cdot").shift(0.2*LEFT)
 
