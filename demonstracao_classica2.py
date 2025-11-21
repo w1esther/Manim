@@ -42,9 +42,9 @@ class DemonstracaoClassicaPitagoras(MovingCameraScene):
         t2 = VGroup()
         t2.add(triangulo2, label_a_t2, label_b_t2)
         t3 = VGroup()
-        t3.add(triangulo3, label_a_t3, label_b_t3)
+        t3.add(triangulo3, label_a_t3, label_b_t3, label_c_t3)
         t4 = VGroup()
-        t4.add(triangulo4, label_a_t4, label_b_t4)
+        t4.add(triangulo4, label_a_t4, label_b_t4, label_c_t4)
 
         self.play(FadeIn(triangulo1))
         self.play(FadeIn(label_a_t1), FadeIn(label_b_t1), FadeIn(label_c_t1))
@@ -87,7 +87,7 @@ class DemonstracaoClassicaPitagoras(MovingCameraScene):
 
         self.wait()
 
-        self.play(label_c_t1.animate.shift(1*UP+0.5*RIGHT), label_c_t2.animate.shift(1*DOWN+1.5*RIGHT), FadeOut(label_c_t3), FadeOut(label_c_t4), FadeIn(mult))
+        self.play(label_c_t1.animate.shift(1*UP+0.5*RIGHT), label_c_t2.animate.shift(1*DOWN+1.5*RIGHT), FadeIn(mult))
 
         self.play(Transform(label_c_t1, c_quadrado), Transform(label_c_t2, c_quadrado), FadeOut(mult))
 
@@ -97,7 +97,9 @@ class DemonstracaoClassicaPitagoras(MovingCameraScene):
 
         self.wait()
 
-        self.play(t3.animate.shift(2*LEFT), t2.animate.shift(3.0*RIGHT + 2.0*DOWN), t1.animate.shift(3*UP))
+        self.play(t3.animate.shift(1.95*LEFT), t2.animate.shift(2.95*RIGHT + 1.95*DOWN), t1.animate.shift(2.95*UP))
+        self.bring_to_front(label_c_t4)
+        self.bring_to_front(label_c_t3)
 
         self.wait()
 
