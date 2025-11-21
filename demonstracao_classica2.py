@@ -109,7 +109,7 @@ class DemonstracaoClassicaPitagoras(MovingCameraScene):
 
         self.play(self.camera.frame.animate.scale(1.5).shift(2*RIGHT + 2* DOWN))
 
-        self.play(quadrado.animate.shift(3*RIGHT+6*DOWN), c_quadrado.animate.shift(3*RIGHT + 6*DOWN), quadrado_inv.animate.shift(5*DOWN +1*LEFT), label_b_t1.animate.shift(5*DOWN + 1*LEFT), FadeOut(label_b_t2), quadrado_inv2.animate.shift(7.5*DOWN + 1.5*RIGHT), label_a_t2.animate.shift(7.5*DOWN +1.5*RIGHT), FadeOut(label_a_t3))
+        self.play(quadrado.animate.shift(3*RIGHT+6*DOWN).rotate(33.5*DEGREES), c_quadrado.animate.shift(3*RIGHT + 6*DOWN), quadrado_inv.animate.shift(5*DOWN +1*LEFT), label_b_t1.animate.shift(5*DOWN + 1*LEFT), FadeOut(label_b_t2), quadrado_inv2.animate.shift(7.5*DOWN + 1.5*RIGHT), label_a_t2.animate.shift(7.5*DOWN +1.5*RIGHT), FadeOut(label_a_t3))
 
         mais = MathTex("+").shift(0.8*RIGHT + 6*DOWN)
         igual = MathTex("=").shift(6*DOWN + 5.5*RIGHT)
