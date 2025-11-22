@@ -68,10 +68,10 @@ class DemonstracaoAlgebricaPitagoras(MovingCameraScene):
         self.play(FadeIn(quadrado2))
         self.play(quadrado2.animate.shift(7*RIGHT), self.camera.frame.animate.shift(4*RIGHT))
 
-        a_b = MathTex(r"a + b").shift(3*DOWN+7*RIGHT)
-        a_bcopia = a_b.copy()
-        a_b2 = MathTex(r"a + b").shift(10.7*RIGHT)
-        a_b2copia = a_b2.copy()
+        a_b = MathTex(r"(a + b)").shift(3*DOWN+7*RIGHT)
+        a_bcopia = MathTex(r"a + b").shift(3*DOWN+7*RIGHT)
+        a_b2 = MathTex(r"(a + b)").shift(10.7*RIGHT)
+        a_b2copia = MathTex(r"a + b").shift(10.7*RIGHT)
         area = MathTex(r"(a + b)^2").shift(7*RIGHT)
         area_copia = area.copy()
 
